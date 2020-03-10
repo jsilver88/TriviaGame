@@ -1,0 +1,9 @@
+body{
+    background-image: url("../images/rick.png");
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#start{
+    margin-top: 40px;
+    padding: 20px;
+}
