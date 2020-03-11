@@ -23,6 +23,10 @@ h2{
     font-family: 'Viaoda Libre', cursive;
 }
 
+h3{
+    text-align: center;
+}
+
 #button{
     text-align: center;
 }

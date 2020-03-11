@@ -89,6 +89,7 @@ var startGame = {
     },
 
     Correct: function(){
+        console.log("correct");
         clearInterval(time);
         startGame.correct++;
         $("#little-wrap").html("<h2> Correct!</h2>");
@@ -100,6 +101,7 @@ var startGame = {
     },
 
     Incorrect: function(){
+        console.log("incorrect");
         clearInterval(time);
         startGame.incorrect++;
         $("#little-wrap").html("<h2> Incorrect!</h2>");
@@ -111,8 +113,23 @@ var startGame = {
         }
     },
 
+    onClick: function(e){
+        clearInterval(time);
+        if($(e.target).data("name") === questions[startGame.mcQuestion].correctChoice){
+            startGame.Correct();
+        } else {
+            startGame.Incorrect();
+        }
+    }
+
+    
+
 
 
 
 
 }
+
+$(document).on("click", ".choices", function(e){
+    startGame.onClick(e);
+})
