@@ -1,8 +1,7 @@
 body{
-    background-image: url("../images/rick.png");
-    background-repeat: no-repeat;
-    font-family: 'Noto Sans', sans-serif;
+    background-image: url("../images/rnmsunset.png");
     color: white;
+    text-align: center;
 }
 
 #start{
@@ -10,23 +9,34 @@ body{
     padding: 10px;
     color: white;
     border-color: lightblue;
-    background-color: lightblue;
+    background-color: #3f27cd;
 }
 
 h1{
-    color: black;
-    text-align: center;
+    color: white;
+    font-family: 'Patrick Hand', cursive;
+    padding: 20px;
 }
 
 h2{
-    text-align: center;
-    font-family: 'Viaoda Libre', cursive;
+    padding: 20px;
+    font-family: 'Patrick Hand', cursive;
 }
 
 h3{
-    text-align: center;
+    font-family: 'Changa', sans-serif;
 }
 
-#button{
-    text-align: center;
+p{
+    font-family: 'Changa', sans-serif;
+    font-size: 24px;
 }
+
+.choices{
+    margin: 20px;
+    background-color: #3f27cd;
+    color: white;
+    border-color: #3f27cd;
+    font-family: 'Changa', sans-serif;
+}
+

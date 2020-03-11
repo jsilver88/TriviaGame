@@ -55,7 +55,7 @@ var startGame = {
         $("#little-wrap").html("<h2> Time remaining: <span id ='counter'>30</span> seconds</h2>");
         $("#little-wrap").append("<h2>" + questions[startGame.mcQuestion].question + "</h2>");
         for (var i = 0; i < questions[startGame.mcQuestion].choices.length; i++){
-            $("#little-wrap").append("<button class='choices btn btn-outline-light' id='button- " + i + "' data-name=' " + questions[startGame.mcQuestion].choices[i] + "'>' " + questions[startGame.mcQuestion].choices[i] + "</button>" );
+            $("#little-wrap").append("<button class='choices btn btn-light' id='button- " + i + "'data-name=' " + questions[startGame.mcQuestion].choices[i] + "'>' " + questions[startGame.mcQuestion].choices[i] + "</button>" );
         }
 
     },
@@ -63,8 +63,8 @@ var startGame = {
     nextQuestion: function(){
         startGame.timer = 30;
         $("#counter").html(startGame.timer);
-        game.mcQuestion++;
-        game.startQuestion();
+        startGame.mcQuestion++;
+        startGame.startQuestion();
     },
 
     timeUp: function(){
@@ -82,10 +82,10 @@ var startGame = {
     answers: function(){
         clearInterval(time);
         $("#little-wrap").html("<h2>Hooray, you finished!</h2>")
-        $("#little-wrap").append("Correct: " + game.correct);
-        $("#little-wrap").append("Incorrect: " + game.incorrect);
-        $("#little-wrap").append("Unanswered: " + game.unanswered);
-
+        $("#little-wrap").append("<p> Correct: " + startGame.correct + "</p>");
+        $("#little-wrap").append("<p> Incorrect: " + startGame.incorrect + "</p>");
+        $("#little-wrap").append("<p> Unanswered: " + startGame.unanswered + "<p>");
+        $("#little-wrap").append("<button class='btn btn-light' id= 'restart'> Restart</button>")
     },
 
     Correct: function(){
@@ -105,7 +105,7 @@ var startGame = {
         clearInterval(time);
         startGame.incorrect++;
         $("#little-wrap").html("<h2> Incorrect!</h2>");
-        $("#littl-wrap").append("<h3> Correct answer is: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
+        $("#little-wrap").append("<h3> Correct answer is: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
         if(startGame.mcQuestion === questions.length - 1){
             setTimeout(startGame.answers, 2000);
         } else{
@@ -120,16 +120,23 @@ var startGame = {
         } else {
             startGame.Incorrect();
         }
+    },
+
+    restart: function(){
+        startGame.mcQuestion = 0;
+        startGame.timer = 0;
+        startGame.correct = 0;
+        startGame.incorrect = 0;
+        startGame.unanswered = 0;
+        startGame.startQuestion();
     }
-
-    
-
-
-
-
 
 }
 
 $(document).on("click", ".choices", function(e){
     startGame.onClick(e);
+})
+
+$(document).on("click", "#restart", function(){
+    startGame.restart();
 })
