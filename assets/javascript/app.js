@@ -51,7 +51,7 @@ var startGame = {
     },
 
     startQuestion: function(){
-        time = setInterval(startGame.timer, 1000);
+        time = setInterval(startGame.count, 1000);
         $("#little-wrap").html("<h2> Time remaining: <span id ='counter'>30</span> seconds</h2>");
         $("#little-wrap").append("<h2>" + questions[startGame.mcQuestion].question + "</h2>");
         for (var i = 0; i < questions[startGame.mcQuestion].choices.length; i++){
