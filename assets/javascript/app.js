@@ -54,6 +54,9 @@ var startGame = {
         time = setInterval(startGame.timer, 1000);
         $("#little-wrap").html("<h2> Time remaining: <span id ='counter'>30</span> seconds</h2>");
         $("#little-wrap").append("<h2>" + questions[startGame.mcQuestion].question + "</h2>");
+        for (var i = 0; i < questions[startGame.mcQuestion].choices.length; i++){
+            $("#little-wrap").append("<button class='choices btn btn-outline-light' id='button- " + i + "' data-name=' " + questions[startGame.mcQuestion].choices[i] + "'>' " + questions[startGame.mcQuestion].choices[i] + "</button>" );
+        }
 
     },
 
@@ -66,7 +69,7 @@ var startGame = {
 
     timeUp: function(){
         clearInterval(time);
-        game.unanswered++;
+        startGame.unanswered++;
         $("#little-wrap").html("<h2>Time's Up!</h2>");
         $("#little-wrap").html("<h3>The answer is: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
         if (startGame.mcQuestion === questions.length - 1){
@@ -79,7 +82,37 @@ var startGame = {
     answers: function(){
         clearInterval(time);
         $("#little-wrap").html("<h2>Hooray, you finished!</h2>")
-        
-    }
+        $("#little-wrap").append("Correct: " + game.correct);
+        $("#little-wrap").append("Incorrect: " + game.incorrect);
+        $("#little-wrap").append("Unanswered: " + game.unanswered);
+
+    },
+
+    Correct: function(){
+        clearInterval(time);
+        startGame.correct++;
+        $("#little-wrap").html("<h2> Correct!</h2>");
+        if(startGame.mcQuestion === questions.length - 1){
+            setTimeout(startGame.answers, 2000);
+        } else{
+            setTimeout(startGame.nextQuestion, 2000);
+        }
+    },
+
+    Incorrect: function(){
+        clearInterval(time);
+        startGame.incorrect++;
+        $("#little-wrap").html("<h2> Incorrect!</h2>");
+        $("#littl-wrap").append("<h3> Correct answer is: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
+        if(startGame.mcQuestion === questions.length - 1){
+            setTimeout(startGame.answers, 2000);
+        } else{
+            setTimeout(startGame.nextQuestion, 2000);
+        }
+    },
+
+
+
+
 
 }
