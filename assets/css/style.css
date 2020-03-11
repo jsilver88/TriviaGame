@@ -1,9 +1,19 @@
 body{
     background-image: url("../images/rick.png");
     font-family: 'Noto Sans', sans-serif;
+    color: white;
 }
 
 #start{
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 20px;
+}
+
+h1{
+    color: lightblue;
+}
+
+h2{
+    text-align: center;
+    font-family: 'Viaoda Libre', cursive;
 }

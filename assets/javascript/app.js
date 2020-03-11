@@ -1,5 +1,6 @@
 $("#start").on("click", function(){
     $("#start").remove();
+    startGame.startQuestion();
 })
 
 
@@ -30,4 +31,55 @@ var questions = [{
 },
 
 ];
-console.log(questions);
+// console.log(questions);
+
+var startGame = {
+    questions: questions,
+    mcQuestion: 0,
+    timer: 30,
+    correct: 0,
+    incorrect: 0,
+    unanswered: 0,
+
+    count: function(){
+        startGame.timer --;
+        $("#counter").html(startGame.timer);
+        if(startGame.timer <= 0){
+            startGame.timeUp();
+            console.log("Time's up.");
+        }
+    },
+
+    startQuestion: function(){
+        time = setInterval(startGame.timer, 1000);
+        $("#little-wrap").html("<h2> Time remaining: <span id ='counter'>30</span> seconds</h2>");
+        $("#little-wrap").append("<h2>" + questions[startGame.mcQuestion].question + "</h2>");
+
+    },
+
+    nextQuestion: function(){
+        startGame.timer = 30;
+        $("#counter").html(startGame.timer);
+        game.mcQuestion++;
+        game.startQuestion();
+    },
+
+    timeUp: function(){
+        clearInterval(time);
+        game.unanswered++;
+        $("#little-wrap").html("<h2>Time's Up!</h2>");
+        $("#little-wrap").html("<h3>The answer is: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
+        if (startGame.mcQuestion === questions.length - 1){
+            setTimeout(startGame.answers, 3000);
+        } else{
+            setTimeout(startGame.nextQuestion, 3000);
+        }
+    },
+
+    answers: function(){
+        clearInterval(time);
+        $("#little-wrap").html("<h2>Hooray, you finished!</h2>")
+        
+    }
+
+}
