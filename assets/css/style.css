@@ -1,5 +1,6 @@
 body{
     background-image: url("../images/rnmsunset.png");
+    background-size: cover;
     color: white;
     text-align: center;
 }
