@@ -8,8 +8,9 @@ body{
     margin-top: 15px;
     padding: 10px;
     color: white;
-    border-color: lightblue;
+    border-color: white;
     background-color: #3f27cd;
+    border-radius: 20px;
 }
 
 h1{
@@ -38,5 +39,14 @@ p{
     color: white;
     border-color: #3f27cd;
     font-family: 'Changa', sans-serif;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#restart{
+    background-color: #3f27cd;
+    color: white;
+    border-color: #3f27cd;
+    border-radius: 20px;
 }
 
