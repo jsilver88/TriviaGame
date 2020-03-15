@@ -106,7 +106,7 @@ var startGame = {
         clearInterval(time);
         startGame.incorrect++;
         $("#little-wrap").html("<h2> Incorrect!</h2>");
-        $("#little-wrap").append("<h3> Wrong! It's actually: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
+        $("#little-wrap").append("<h3> The correct answer was: " + questions[startGame.mcQuestion].correctChoice + "</h3>");
         if(startGame.mcQuestion === questions.length - 1){
             setTimeout(startGame.answers, 2000);
         } else{
